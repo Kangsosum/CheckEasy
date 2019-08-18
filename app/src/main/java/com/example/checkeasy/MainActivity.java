@@ -65,24 +65,9 @@ public class MainActivity extends BaseActivity implements GoogleMap.OnMyLocation
         map.moveCamera(CameraUpdateFactory.newLatLng(SEOUL));
         map.animateCamera(CameraUpdateFactory.zoomTo(12));
 
-        click_gps_btn();
+
     }
 
-    private void click_gps_btn() {
-        try {
-            MapsInitializer.initialize(this);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Button zoomGps = (Button) findViewById(R.id.map_gps);
-
-        zoomGps.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-    }
 
     @Override
     public void onMyLocationClick(@NonNull Location location) {
@@ -99,7 +84,6 @@ public class MainActivity extends BaseActivity implements GoogleMap.OnMyLocation
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
-    // requestPermissions 한 퍼미션 지정한 수 만큼 물어보는 역할
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         // 만약 requestPermissions 로 지정한 requestCode 가 MY_PERMISSION_NFC 일 때
@@ -138,6 +122,7 @@ public class MainActivity extends BaseActivity implements GoogleMap.OnMyLocation
             map.getUiSettings().setMyLocationButtonEnabled(true);
             map.setOnMyLocationButtonClickListener(this);
             map.setOnMyLocationClickListener(this);
+            map.getUiSettings().
         }else {
             map.setMyLocationEnabled(false);
             map.getUiSettings().setMyLocationButtonEnabled(false);
